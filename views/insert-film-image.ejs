@@ -1,0 +1,35 @@
+<%- include('header', {title, isLoggedIn, user}); -%>
+
+<!--se è presente un messaggio di errore, lo visualizza-->
+<% if(message) { %> 
+    <div class="below-nav">
+            <div class="text-center error-box">               
+                <h4 class="white-text"><%= message %></h4>       
+            </div> 
+            <div class="space-small"></div> 
+    </div>      
+<% } %>
+<!--form per l'upload dell'immagine di un film-->
+<div class="container-fluid">
+    <main class="<%= message!==null ? '' : 'below-nav' %>">   
+        <form method="POST" action="/insert-film/<%= id %>" class="white-text" enctype="multipart/form-data">
+            <h3 class="center-item">
+                Inserisci l'immagine del film (in rapporto 2:3 e formato .jpg)
+            </h3>
+            <div class="row justify-content-center margin-small">
+                <div class="col-md-2">
+                    <label>Immagine</label>
+                    <input type="file" class="form-control-file" name="image" enctype="multipart/form-data"> 
+                </div>
+            </div>
+            <div class="space-small"></div>
+            <div class="row justify-content-center margin-small">
+                <div class="col-md-4 text-center">
+                    <button type="submit" class="btn btn-card white-text">Carica</button>
+                </div>
+            </div>
+        </form>
+    </main>
+</div>
+
+<%- include('footer'); -%>

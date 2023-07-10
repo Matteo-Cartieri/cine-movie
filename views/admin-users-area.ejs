@@ -1,0 +1,36 @@
+<%- include('header', {title, isLoggedIn, user}); -%>
+
+<!--pagina per la gestione di tutti i biglietti e le recensioni degli utenti-->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <main class="col-sm-8 below-nav">
+            <h4 class="white-text">
+                Tutti i biglietti
+            </h4>
+            <div class="space-small"></div>
+            <% if(tickets === null || tickets.length === 0) { %>
+                <h6 class="white-text">
+                    Nessun biglietto acquistato
+                </h6>    
+            <% } %>
+            <% tickets.forEach((biglietto)=> { %>
+                <%- include('admin-ticket-card', {biglietto}); -%>  
+            <% }); %>
+            <div class="space-small"></div>
+            <h4 class="white-text">
+                Tutte le recensioni
+            </h4>
+            <div class="space-small"></div>
+            <% if(reviews===null || reviews.length === 0) { %>
+                <h6 class="white-text">
+                    Nessuna recensione
+                </h6>    
+            <% } %>
+            <% reviews.forEach((recensione)=> { %>
+                <%- include('review-modify', {recensione}); -%>     
+            <% }); %>
+        </main>
+    </div>
+</div>   
+
+<%- include('footer'); -%>

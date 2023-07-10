@@ -1,0 +1,46 @@
+<%- include('header', {title, isLoggedIn, user}); -%>
+<!--se è presente un messaggio di errore, lo visualizza-->
+<% if(message) { %> 
+    <div class="below-nav">
+        <div class="text-center error-box">               
+            <h4 class="white-text"><%= message %></h4>       
+        </div> 
+        <div class="space-small"></div> 
+    </div>      
+<% } %>
+<!--form per l'inserimento delle informazioni per la modifica di una recensione-->
+<div class="container-fluid">
+    <main class="<%= message!==null ? '' : 'below-nav' %>">   
+        <form method="POST" action="/insert-review/<%=film.idFilm%>/<%=recensione.idRecensione%>/update" class="white-text">
+            <h3 class="center-item">
+                Scrivi la tua recensione
+            </h3>
+            <div class="row justify-content-center margin-small">
+                <div class="col-md-2">                    
+                    <label>Valutazione (da 0 a 5)</label>
+                    <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-star-fill"></i></span>                        
+                        <input type="text" class="form-control" name="stars" value="<%=recensione.stelle%>">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center margin-small">
+                <div class="col-md-8">
+                    <label>Recensione</label>                    
+                    <input type="text" class="form-control" name="review" value="<%=recensione.testo%>">
+                </div>                
+            </div>
+
+            <div class="space-small"></div>
+            <div class="row justify-content-center margin-small">
+                <div class="col-md-4 text-center">
+                    <button type="submit" class="btn btn-card white-text">Pubblica</button>
+                </div>
+            </div>
+
+        </form>
+    </main>
+
+</div>
+
+<%- include('footer'); -%>

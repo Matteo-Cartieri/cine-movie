@@ -1,0 +1,46 @@
+<%- include('header', {title, isLoggedIn, user}); -%>
+
+<!--scheda con tutte le informazioni di un film e le sue recensioni-->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <main class="col-sm-8 below-nav">
+            <div class="flex-card">
+                <div class="card-item bg-shadow">
+                    <img height="250px" src="/img/<%='film_'+film.idFilm %>.jpg" data-holder-rendered="true">
+                </div>
+                <div class="card-item card-item-1 white-text">
+                    <h5><%= film.titolo %></h5>
+                    <p>Regia: <%= film.regia %><br> Anno: <%= film.anno %><br> Cast: <%= film.cast %><br> Durata: <%= film.durata %>'<br> Genere: <%= film.genere %></p>
+                </div>
+                <div class="card-item card-item-2 white-text">
+                    <h5><%= film.data %></h5>
+                    <h2><%= film.ora %></h2>
+                    <a href="/seat-booking/<%=film.idFilm%>" class="btn btn-warning">Prenota un posto</a>
+                </div>
+            </div>
+            <div class="space-small"></div>
+            <h5 class="white-text">
+                Trama
+            </h5>
+            <p class="white-text text-justified">
+                <%= film.trama %>
+            </p>
+            <h4 class="white-text">
+                Recensioni
+            </h4>
+        
+            <a href="/insert-review/<%=film.idFilm%>" class="btn btn-review white-text">
+                <i class="bi bi-plus-lg"></i>
+                Scrivi una recensione
+            </a>
+            
+            <div class="space-small"></div>          
+            <% reviews.forEach((recensione)=> { %>
+                <%- include('review', {recensione}); -%>     
+            <% }); %>
+        </main>
+
+    </div>
+</div>
+
+<%- include('footer'); -%>

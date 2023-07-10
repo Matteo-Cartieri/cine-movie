@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error</title>
+    <link href="/stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body class="white-text">
+    <div class="container-fluid">
+        <div class="flex-select">
+            <h1>
+                <%= message %>
+            </h1>
+            <h2>
+                <%= error.status %>
+            </h2>
+            <pre><%= error.stack %></pre>
+        </div>
+    </div>
+</body>
+
+</html>

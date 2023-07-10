@@ -1,0 +1,75 @@
+<%- include('header', {title, isLoggedIn, user}); -%>
+
+<!--se è presente un messaggio di errore, lo visualizza-->
+<% if(message) { %> 
+    <div class="below-nav">
+            <div class="text-center error-box">               
+                <h4 class="white-text"><%= message %></h4>       
+            </div> 
+            <div class="space-small"></div> 
+    </div>      
+<% } %>
+<!--form per l'inserimento delle informazioni di un film-->
+<div class="container-fluid">
+    <main class="<%= message!==null ? '' : 'below-nav' %>">   
+        <form method="POST" action="/insert-film" class="white-text">
+            <h3 class="center-item">
+                Inserisci i dati del film
+            </h3>
+            <div class="row justify-content-center margin-small">
+                <div class="col-md-4">
+                    <label>Titolo</label>
+                    <input type="text" class="form-control" name="title" placeholder="Titolo">
+                </div>
+                <div class="col-md-4">
+                    <label>Regia</label>
+                    <input type="text" class="form-control" name="direction" placeholder="Regia">
+                </div>
+            </div>
+            <div class="row justify-content-center margin-small">
+                <div class="col-md-2">
+                    <label>Anno</label>
+                    <input class="form-control" name="year" placeholder="Anno">
+                </div>
+                <div class="col-md-2">
+                    <label>Durata (in minuti)</label>
+                    <input class="form-control" name="length" placeholder="Durata">
+                </div>
+                <div class="col-md-4">
+                    <label>Genere</label>
+                    <input type="text" class="form-control" name="genre" placeholder="Genere">
+                </div>
+            </div>
+            <div class="row justify-content-center margin-small">
+                <div class="col-md-2">
+                    <label>Giorno</label>
+                    <input type="text" class="form-control" name="day" placeholder="Giorno">
+                </div>
+                <div class="col-md-2">
+                    <label>Orario</label>
+                    <input class="form-control" name="hour" placeholder="hh:mm">
+                </div>
+                <div class="col-md-4">
+                    <label>Cast</label>                    
+                    <input type="text" class="form-control" name="cast" placeholder="Cast">
+                </div>
+            </div>
+            <div class="row justify-content-center margin-small">
+                <div class="col-md-8">
+                    <label>Trama</label>                    
+                    <input type="text" class="form-control" name="plot" placeholder="Trama">
+                </div>                
+            </div>
+            <div class="space-small"></div>
+            <div class="row justify-content-center margin-small">
+                <div class="col-md-4 text-center">
+                    <button type="submit" class="btn btn-card white-text">Carica</button>
+                </div>
+            </div>
+
+        </form>
+    </main>
+
+</div>
+
+<%- include('footer'); -%>

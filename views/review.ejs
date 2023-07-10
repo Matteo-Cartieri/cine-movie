@@ -1,0 +1,18 @@
+<!--card che visualizza le informazioni di una recensione-->
+<div class="card card-block white-text">
+    <div class="card-header">
+        <h5 class="card-title">
+            <%= recensione.nome %> <%= recensione.cognome %>&emsp;
+            <% for (let j=0; j<recensione.stelle; j++) { %>
+                <i class="bi bi-star-fill"></i>
+            <% } %>
+            <% for (let j=0; j<5-recensione.stelle; j++) { %>
+                <i class="bi bi-star"></i>
+            <% } %>
+        </h5>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"><%= recensione.testo %></h5>
+        <small class="card-text"></small>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<!--card che visualizza le informazioni di un biglietto prenotato da un utente-->
+<div class="card card-block white-text padding-small">
+    <div class="flex-card">                        
+        <div class="card-item card-item-1">
+            <h5 class="card-title">                
+                <%= biglietto.titolo %>
+            </h5>                            
+        </div>
+        <div class="card-item">                    
+            <h6 class="card-title">                
+                Posto: <%= biglietto.posto %>
+            </h6>
+        </div>
+        <div class="card-item text-center">
+            <i class="bi bi-clock"></i>
+            <h6 class="card-title"><%= biglietto.data %></h6>
+           <h6 class="card-title"><%= biglietto.ora %></h6>   
+        </div> 
+    </div>
+</div>

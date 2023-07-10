@@ -1,0 +1,52 @@
+<%- include('header', {title, isLoggedIn}); -%>
+
+<!--pagina di info-->
+<div class="container-fluid">
+    <div class="flex-reservation">
+        <main class="below-nav">
+            <div class="space-small"></div>
+            <h3 class="white-text"> Chi siamo: </h3>
+            <p class="white-text text-justified">
+                CineMovie è una sala cinematografica che proietta sia le ultime uscite sia i migliori classici.<br>
+                Ci trovate a Novara, viale Alessandro Manzoni 10.<br>
+                Prenota i tuoi biglietti online registrandoti <a href="/signup" class="white-text"> al nostro sito.</a>
+            </p>
+            <div class="space-small"></div>
+            <h3 class="white-text"> Prezzi: </h3>
+            <table class="table white-text">
+                <thead>
+                    <tr>
+                        <th>Biglietto</th>
+                        <th>Intero</th>
+                        <th>Ridotto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Standard</td>
+                        <td>&euro; 9</td>
+                        <td>&euro; 6</td>
+                    </tr>
+                    <tr>
+                        <td>Spettacolo pomeridiano</td>
+                        <td>&euro; 8</td>
+                        <td>&euro; 5</td>
+                    </tr>
+                    <tr>
+                        <td>Abbonamento mensile</td>
+                        <td>&euro; 30</td>
+                        <td>&euro; 20</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+        <aside class="below-nav">
+            <div class="space-small"></div>
+            <h3 class="white-text"> Ci trovate qui: </h3>
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1JgdAK3eICchPwpjBsNskpE5CV0S-Sbk&ehbc=2E312F"
+                width="480" height="320"></iframe>
+        </aside>
+    </div>
+</div>
+
+<%- include('footer'); -%>

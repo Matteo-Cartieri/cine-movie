@@ -1,0 +1,23 @@
+<!--card per visualizzare nella homepage le informazioni principali dei film-->
+<div class="card card-block film-card" date="<%= film.data %>" hour="<%= film.ora %>" genre="<%= film.genere %>">
+    <div class="flex-card">
+        <div class="card-item">
+            <a href="/film-page/<%=film.idFilm%>">
+                <img class="card-img-top" src="img/<%='film_'+film.idFilm %>.jpg" data-holder-rendered="true">
+            </a>
+        </div>
+        <div class="card-item card-item-1 white-text">
+            <h5 class="card-title"><%= film.titolo %></h5>
+            <p class="card-text">Regia: <%= film.regia %><br> Anno: <%= film.anno %><br> Cast: <%= film.cast %><br> Durata: <%= film.durata %>'<br> Genere: <%= film.genere %></p>
+        </div>
+        <div class="card-item card-item-2 white-text">
+            <h5 class="card-title"><%= film.data %></h5>
+            <h2 class="card-title"><%= film.ora %></h2>
+            <a href="/seat-booking/<%=film.idFilm%>" class="btn btn-warning">Prenota un posto</a>
+        </div>
+        <div class="card-item card-item-2">
+            <a href="/film-page/<%=film.idFilm%>" class="btn btn-primary btn-card white-text">Leggi la scheda</a>
+            <a href="/insert-review/<%=film.idFilm%>" class="btn btn-primary btn-card white-text">Scrivi una recensione</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<!--card che visualizza le informazioni di una recensione e i pulsanti che ne permettono la modifica o la cancellazione-->
+<div class="card card-block">
+    <div class="card-header">
+        <div class="flex-card">
+            <h5 class="card-title card-item card-item-1 white-text">
+                <%= recensione.nome %> <%= recensione.cognome %>&emsp;
+                <% for (let j=0; j<recensione.stelle; j++) { %>
+                    <i class="bi bi-star-fill"></i>
+                <% } %>
+                <% for (let j=0; j<5-recensione.stelle; j++) { %>
+                    <i class="bi bi-star"></i>
+                <% } %>
+            </h5>
+            <div class="flex-button">                
+                <button class="btn">
+                    <a href="/insert-review/<%=recensione.idFilm%>/<%=recensione.idRecensione%>" class="white-text btn btn-outline-light">
+                        <i class="bi bi-pencil"></i>
+                    </a>                   
+                </button> 
+                <div>
+                    <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
+                    <!--modal per la conferma dell'eliminazione della recensione-->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cancella recensione</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Vuoi eliminare questa recensione?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                    <form method="POST" action="/insert-review/<%=recensione.idRecensione%>/delete">
+                                        <button type="submit" class="btn btn-primary">Conferma</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>              
+            </div>
+        </div>
+    </div>
+    <div class="card-body white-text">
+        <h5 class="card-title"><%= recensione.testo %></h5>
+        <small class="card-text"></small>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<%- include('header', {title, isLoggedIn, user}); -%>
+
+<!--pagina che mostra i posti rappresentanti i biglietti disponibili per un determinato film-->
+    <div class="container-fluid flex-reservation">
+        <main class="<%= message!==null ? '' : 'below-nav' %>">   
+            <div class="flex-cinema-room">
+                <div class="row">
+                    <div class="screen"></div>
+                </div>
+                <div class="seats">
+                    <!--se un posto è già occupato, verrà contrassegnato da un colore più scuro e non sarà prenotabile-->
+                    <div class="row">
+                        <% for (let j=72; j>60; j--) { %>
+                            <div class="seat <%= tickets.some(ticket => ticket.posto == j) ? 'occupied' : '' %>" id="<%= j %>"></div>
+                        <% } %>
+                    </div>
+                    <div class="row">
+                        <% for (let j=60; j>48; j--) { %>
+                            <div class="seat <%= tickets.some(ticket => ticket.posto == j) ? 'occupied' : '' %>" id="<%= j %>"></div>
+                        <% } %>
+                    </div>
+                    <div class="row">
+                        <% for (let j=48; j>36; j--) { %>
+                            <div class="seat <%= tickets.some(ticket => ticket.posto == j) ? 'occupied' : '' %>" id="<%= j %>"></div>
+                        <% } %>
+                    </div>
+                    <div class="row">
+                        <% for (let j=36; j>24; j--) { %>
+                            <div class="seat <%= tickets.some(ticket => ticket.posto == j) ? 'occupied' : '' %>" id="<%= j %>"></div>
+                        <% } %>
+                    </div>
+                    <div class="row">
+                        <% for (let j=24; j>12; j--) { %>
+                            <div class="seat <%= tickets.some(ticket => ticket.posto == j) ? 'occupied' : '' %>" id="<%= j %>"></div>
+                        <% } %>
+                    </div>
+                    <div class="row">
+                        <% for (let j = 12; j > 0; j--) { %>
+                            <div class="seat <%= tickets.some(ticket => ticket.posto == j) ? 'occupied' : '' %>" id="<%= j %>"></div>
+                        <% } %>                        
+                    </div>
+                </div>
+            </div>
+        </main>
+        <aside class="below-nav">
+            <div class="flex-reservation">
+                <ul class="flex-legend card-legend">
+                    <li>
+                        <div class="seat-square"></div>
+                        <h6 class="white-text">Libero</h6>
+                    </li>
+                    <li>
+                        <div class="seat-square selected"></div>
+                        <h6 class="white-text">Selezionato</h6>
+                    </li>
+                    <li>
+                        <div class="seat-square occupied"></div>
+                        <h6 class="white-text">Occupato</h6>
+                    </li>
+                </ul>
+
+                <div class="flex-cinema-btn">
+                    <div class="card-legend">
+                        <h5 class="white-text margin-top"><%= film.titolo %></h5>
+                    </div>        
+
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ticketModal">
+                        Acquista
+                    </button>
+                    <div class="modal fade" id="ticketModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Conferma acquisto</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" id="ticket-message">
+                                    <!--messaggio stampato da seat-click.js-->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>                                    
+                                    <button type="button" class="btn btn-primary confirm" data-bs-dismiss="modal" id="buy-ticket" value="<%= film.idFilm %>">
+                                        Conferma                                        
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+<%- include('footer'); -%>

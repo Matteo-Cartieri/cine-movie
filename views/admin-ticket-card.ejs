@@ -1,0 +1,48 @@
+<!--card per la gestione dei biglietti degli utenti da parte dell'admin-->
+<div class="card card-block white-text padding-small">
+    <div class="flex-card">                        
+        <div class="card-item card-item-1">
+            <h5 class="card-title">                
+                <%= biglietto.titolo %>
+            </h5>                            
+        </div>
+        <div class="card-item">                    
+            <h6 class="card-title">                
+                Posto: <%= biglietto.posto %>
+            </h6>
+        </div>
+        <div class="card-item text-center">
+            <i class="bi bi-clock"></i>
+            <h6 class="card-title"><%= biglietto.data %></h6>
+           <h6 class="card-title"><%= biglietto.ora %></h6>   
+        </div>
+        <div class="card-item text-center">
+            <h6 class="card-title">Prenotato da:</h6> 
+            <h6 class="card-title"><%= biglietto.nome %> <%= biglietto.cognome %></h6>             
+        </div> 
+        <div class="card-item">
+            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#deleteTicket<%= biglietto.idBiglietto %>"><i class="bi bi-trash"></i></button>            
+        </div>  
+    </div>
+</div>
+
+<!--modal per la conferma della cancellazione del biglietto-->
+<div class="modal fade" id="deleteTicket<%= biglietto.idBiglietto %>" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Cancella prenotazione</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Vuoi cancellare il biglietto prenotato da <%= biglietto.nome %> <%= biglietto.cognome %> per "<%= biglietto.titolo %>"?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                <form method="POST" action="/seat-booking/<%= biglietto.idBiglietto %>/delete">
+                    <button type="submit" class="btn btn-primary">Conferma</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
