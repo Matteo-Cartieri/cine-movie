@@ -1,4 +1,4 @@
 CineMovie
 
-Credenziali utenti:
-UTENTE: mario@email.it
+L'applicazione web è disponibile all'indirizzo:
+https://cine-movie.onrender.com
